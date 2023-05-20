@@ -14,7 +14,7 @@ const LoginScreen = ({ handleLogin }) => {
         if (userNumber === '1234' && password === 'password' && userType !== null) {
         handleLogin(userType);
         } else {
-        alert('Invalid credentials!');
+        alert('Ihre Anmeldeinformationen sind leider nicht korrekt. Bitte versuchen Sie es erneut.');
         }
     };
 
