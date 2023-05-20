@@ -1,3 +1,4 @@
+// Importing required components and libraries from react, react-native and @expo/vector-icons
 import React from "react";
 import {
   StyleSheet,
@@ -6,8 +7,11 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
+
+// Import Icons for buttons from Expo library
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
+// Array of messages, each message contains sender name, specialization and the message content
 const messages = [
   {
     sender: "Dr. Huber",
@@ -76,21 +80,28 @@ const messages = [
   },
 ];
 
+// NachrichtenScreen is a functional component for displaying messages
+// The component receives handleScreenChange function as props for navigation
 const NachrichtenScreen = ({ handleScreenChange }) => {
+  // Function to navigate to the new message screen
   const handleNewMessage = (screen) => {
     handleScreenChange(screen);
   };
+  // Function to open an existing message
   const handleOpenMessage = (screen) => {
     handleScreenChange(screen);
   };
 
+  // Render the NachrichtenScreen component
   return (
     <View style={styles.container}>
+      {/* Display messages in a scrollable view */}
       <ScrollView style={styles.messages}>
-        {messages.map((message, index) => (
+         {/* Map through each message and render it on the screen */}
+         {messages.map((message, index) => (
           <TouchableOpacity
             key={index}
-            onPress={() => handleOpenMessage("chat")}
+            onPress={() => handleOpenMessage("chat")} // On press, navigate to the chat screen to display a message
           >
             <View style={styles.message}>
               <MaterialCommunityIcons name="doctor" size={50} color="#007AFF" />
@@ -107,6 +118,7 @@ const NachrichtenScreen = ({ handleScreenChange }) => {
           </TouchableOpacity>
         ))}
       </ScrollView>
+      {/* Floating Action Button for creating new message */}
       <TouchableOpacity
         style={styles.fab}
         onPress={() => {
@@ -120,6 +132,7 @@ const NachrichtenScreen = ({ handleScreenChange }) => {
   );
 };
 
+// Stylesheet for the NachrichtenScreen component
 const styles = StyleSheet.create({
   container: {
     flex: 1,

@@ -1,7 +1,11 @@
+// Importing required components and hooks from React and React Native libraries
 import React, { useState } from 'react';
 import {StyleSheet, Text, View, TextInput, TouchableOpacity} from 'react-native';
+
+// Component used to create dropdowns
 import {Picker} from '@react-native-picker/picker';
 
+// Array of doctor objects. Each object contains the name and specialization of a doctor.
 const doctors = [
   {
     name: ' -   kein Arzt ausgewählt',
@@ -81,10 +85,14 @@ const doctors = [
   },
 ];
 
+// The NeueNachrichtScreen component
+// It receives a handleScreenChange function as a prop
 const NeueNachrichtScreen = ({handleScreenChange}) => {
+  // Setting the initial state for the selected doctor and message text.
   const [selectedDoctor, setSelectedDoctor] = useState(doctors[0].name);
   const [message, setMessage] = useState('');
 
+  // Function to handle the click of the send button, it will call the handleScreenChange function with the given screen name.
   const handleSendButton = (screen) => {
     handleScreenChange(screen);
   };
@@ -94,13 +102,16 @@ const NeueNachrichtScreen = ({handleScreenChange}) => {
         <Text style={styles.messageText}>Wähle einen Arzt aus:</Text>
       </View>
       <View style={styles.pickerContainer}>
+        {/*Picker component to show the list of doctors for selection. The selected value is tracked in selectedDoctor state.*/}
         <Picker
           selectedValue={selectedDoctor}
+          // Function to change the selectedDoctor state whenever a new value is selected
           onValueChange={(itemValue, itemIndex) =>
             setSelectedDoctor(itemValue)
           }
           style={styles.picker}
         >
+          {/* For each doctor in the doctors array, a Picker.Item component is created. This component represents one option in the dropdown list. */}
           {doctors.map((doctor, index) => (
             <Picker.Item key={index} label={`${doctor.name}   -   ${doctor.specialization}`} value={doctor.name} />
           ))}
@@ -119,6 +130,7 @@ const NeueNachrichtScreen = ({handleScreenChange}) => {
   );
 };
 
+//StyleSheet for NeueNachricht Component
 const styles = StyleSheet.create({
   container: {
     flex: 1,

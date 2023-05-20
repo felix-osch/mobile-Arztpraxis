@@ -1,4 +1,7 @@
+// React and hooks imports
 import React, { useState } from "react";
+
+// React Native imports
 import {
   SafeAreaView,
   StyleSheet,
@@ -7,7 +10,11 @@ import {
   TouchableOpacity,
   StatusBar,
 } from "react-native";
+
+// Importing Ionicons for using the icon library
 import { Ionicons } from "@expo/vector-icons";
+
+// Importing components for different screens in the app
 import LoginScreen from "./LoginScreen";
 import HomeScreen from "./HomeScreen";
 import TermineScreen from "./TermineScreen";
@@ -25,11 +32,15 @@ import NachrichtenScreenArzt from "./NachrichtenScreenArzt";
 import ChatArzt from "./ChatArzt";
 import NeueNachrichtArzt from "./NeueNachrichtArzt";
 
+// Main App Component
 const App = () => {
+  // State hooks for login status, user type, and current screen
   const [loggedIn, setLoggedIn] = useState(false);
   const [userType, setUserType] = useState(null);
   const [screen, setScreen] = useState("login");
 
+  // Handle login function, sets the loggedIn state to true and userType to the given argument.
+  // It also sets the screen state to "home" or "homeArzt" based on userType.
   const handleLogin = (userType) => {
     setLoggedIn(true);
     setUserType(userType);
@@ -41,6 +52,7 @@ const App = () => {
     }
   };
 
+  // Handle function for the back button in the app, changes the screen state based on current screen.
   const handleLeftButton = () => {
     switch (screen) {
       case "home":
@@ -95,10 +107,12 @@ const App = () => {
     }
   };
 
+  // Helper function to change the current screen
   const handleScreenChange = (screen) => {
     setScreen(screen);
   };
 
+  // Helper function to render the right screen based on the current screen state
   const renderScreen = () => {
     switch (screen) {
       case "home":
@@ -126,9 +140,7 @@ const App = () => {
       case "dokumenteArzt":
         return <DokumenteScreenArzt />;
       case "nachrichtenArzt":
-        return (
-          <NachrichtenScreenArzt handleScreenChange={handleScreenChange} />
-        );
+        return <NachrichtenScreenArzt handleScreenChange={handleScreenChange} />;
       case "neueNachrichtArzt":
         return <NeueNachrichtArzt handleScreenChange={handleScreenChange} />;
       case "chatArzt":
@@ -138,6 +150,7 @@ const App = () => {
     }
   };
 
+  // Helper function to render the title of the current screen based on the screen state
   const renderTitle = () => {
     switch (screen) {
       case "home":
@@ -177,6 +190,7 @@ const App = () => {
     }
   };
 
+  // Helper function to render the left button of the app, either a back button or a logout button
   const renderLeftButton = () => {
     if (screen === "home" || screen === "homeArzt") {
       return (
@@ -193,6 +207,7 @@ const App = () => {
     }
   };
 
+  // Main render function for the App component
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar backgroundColor="#007AFF" barStyle="light-content" />
@@ -216,6 +231,7 @@ const App = () => {
   );
 };
 
+// Styles for the App component
 const styles = StyleSheet.create({
   container: {
     flex: 1,

@@ -1,7 +1,11 @@
+// Importing required components and libraries from react, react-native and @expo/vector-icons
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, ScrollView } from 'react-native';
+
+// Import Icons for buttons from Expo library
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
+// Array of messages, each message contains sender name and the message content
 const messages = [
   {
     sender: 'Huber Karl',
@@ -57,17 +61,23 @@ const messages = [
   },
 ];
 
+// NachrichtenScreen is a functional component for displaying messages
+// The component receives handleScreenChange function as props for navigation
 const NachrichtenScreen = ({handleScreenChange}) => {
+  // Function to navigate to the new message screen
   const handleNewMessage = (screen) => {
     handleScreenChange(screen);
   };
+  // Function to open an existing message
   const handleOpenMessage = (screen) => {
     handleScreenChange(screen);
   };
 
   return (
     <View style={styles.container}>
+    {/* Display messages in a scrollable view */}
       <ScrollView style={styles.messages}>
+        {/* Map through each message and render it on the screen */}
         {messages.map((message, index) => (
           <TouchableOpacity key={index} onPress={() => handleOpenMessage('chatArzt')} >
             <View style={styles.message} >
@@ -82,6 +92,7 @@ const NachrichtenScreen = ({handleScreenChange}) => {
           </TouchableOpacity>
         ))}
       </ScrollView>
+      {/* Floating Action Button for creating new message */}
       <TouchableOpacity style={styles.fab} onPress={() => { handleNewMessage('neueNachrichtArzt') }} >
         <MaterialCommunityIcons name="plus" style={styles.fabIcon} />
         <Text style={styles.fabText}>Neue{"\n"}Nachricht</Text>
@@ -90,6 +101,7 @@ const NachrichtenScreen = ({handleScreenChange}) => {
   );
 }
 
+// Stylesheet for the NachrichtenScreen component
 const styles = StyleSheet.create({
   container: {
     flex: 1,

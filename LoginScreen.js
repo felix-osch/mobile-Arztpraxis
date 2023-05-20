@@ -1,15 +1,24 @@
+// React and hooks imports
 import React, { useState } from 'react';
+
+// React Native imports
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
+// LoginScreen Component
 const LoginScreen = ({ handleLogin }) => {
+    // State hooks for user number, password, and user type
     const [userNumber, setUserNumber] = useState('');
     const [password, setPassword] = useState('');
     const [userType, setUserType] = useState(null);
 
+    // Function to set the userType state
     const handleUserTypeSelect = (selectedType) => {
         setUserType(selectedType);
     };
 
+    // Handle function for the login button
+    // If user credentials are correct, calls the handleLogin function with userType
+    // Using hard coded credentials for simplicity of PT
     const handleLoginPress = () => {
         if (userNumber === '1234' && password === 'password' && userType !== null) {
         handleLogin(userType);
@@ -18,6 +27,7 @@ const LoginScreen = ({ handleLogin }) => {
         }
     };
 
+    // Helper function to get the placeholder for the user number input based on user type
     const getUserNumberPlaceholder = () => {
         if (userType === 'patient') {
         return 'Sozialversicherungsnummer';
@@ -28,6 +38,7 @@ const LoginScreen = ({ handleLogin }) => {
         }
     };
 
+    // Render function for the LoginScreen component
     return (
         <View style={styles.container}>
         <View style={styles.loginTextContainer}>
@@ -78,6 +89,7 @@ const LoginScreen = ({ handleLogin }) => {
     );
 };
 
+// Styles for the LoginScreen component
 const styles = StyleSheet.create({
     container: {
         flex: 1,

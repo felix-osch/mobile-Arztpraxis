@@ -1,12 +1,18 @@
+// Importing necessary libraries and components
 import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+
+// Importing MaterialCommunityIcons from Expo to display icons
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
+// Defining HomeScreen component which accepts handleScreenChange function as props
 const HomeScreen = ({ handleScreenChange }) => {
+  // Function to change the screen on button press
   const handleScreenPress = (screen) => {
     handleScreenChange(screen);
   };
 
+  // List of buttons, representing the functionalities and the onPress actions if they have some
   return (
     <View style={styles.container}>
       <View style={styles.row}>
@@ -69,6 +75,7 @@ const HomeScreen = ({ handleScreenChange }) => {
   );
 };
 
+// Defining styles for the HomeScreen component
 const styles = StyleSheet.create({
   container: {
     flex: 1,
