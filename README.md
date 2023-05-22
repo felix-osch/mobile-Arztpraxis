@@ -16,8 +16,8 @@ Gerät(e), auf dem(denen) getestet wurde:
 Pixel 6
 
 Externe Libraries und Frameworks:
-{ MaterialCommunityIcons } from "@expo/vector-icons"
-{ StyleSheet, View, Text, FlatList, TouchableOpacity, ScrollView, Modal, TextInput } from "react-native";
+{ MaterialCommunityIcons, Ionicons } from "@expo/vector-icons"
+{ StyleSheet, View, Text, FlatList, TouchableOpacity, ScrollView, Modal, TextInput, SafeAreaView, StatusBar } from "react-native";
 { Card, Divider } from "react-native-paper";
 React, { useState, useEffect } from "react";
 { Calendar, LocaleConfig } from "react-native-calendars";
