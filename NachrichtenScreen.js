@@ -177,6 +177,7 @@ const styles = StyleSheet.create({
   sender: {
     fontWeight: "500",
     fontSize: 24,
+    fontSize: 24,
   },
   specialization: {
     fontStyle: "italic",
@@ -185,7 +186,7 @@ const styles = StyleSheet.create({
   },
   messagePreview: {
     color: "#666",
-    fontSize: 18,
+    fontSize: 20,
   },
   fab: {
     position: "absolute",

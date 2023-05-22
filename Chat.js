@@ -27,7 +27,7 @@ const Chat = () => {
         renderItem={({item}) => 
           // For each chat message, render a text bubble
           <View style={item.sender === 'Doctor' ? styles.doctorBubble : styles.patientBubble}>
-            <Text>{item.message}</Text>
+            <Text style ={styles.messageFont}>{item.message}</Text>
           </View>
         }
         // Use the message id as a key for list items
@@ -73,12 +73,14 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     padding: 10,
     marginRight: 16,
+    
   },
   doctorBubble: {
     backgroundColor: '#d0d0d0',
     alignSelf: 'flex-start',
     borderRadius: 4,
     margin: 8,
+    marginRight: 20,
     padding: 10,
   },
   patientBubble: {
@@ -86,8 +88,14 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
     borderRadius: 4,
     margin: 8,
+    marginLeft: 20,
     padding: 10,
   },
+
+  messageFont: {
+    fontSize: 20
+  }
+  
 });
 
 export default Chat;
