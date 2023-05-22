@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Modal} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Modal } from 'react-native';
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 
@@ -66,18 +66,18 @@ const documents = [
 // Inhalt der Seite 
 
 const DokumenteScreen = () => {
-  const [modalVisible, setModalVisible] = useState(false); 
+  const [modalVisible, setModalVisible] = useState(false);
 
   // Funktion zum Öffnen des Modals
 
-  const handleNotification = () => { 
-    setModalVisible(true);   
+  const handleNotification = () => {
+    setModalVisible(true);
   };
 
   // Funktion zum Schließen des Modals
 
   const handleModalClose = () => {
-    setModalVisible(false);        
+    setModalVisible(false);
   };
 
   // Rendering der Elemente der Seite
@@ -87,32 +87,37 @@ const DokumenteScreen = () => {
 
         {/* Sichbare Ausgabe der Liste */}
 
-        {documents.map((appointment, index) => (
+        {documents.map((docData, index) => (
           <TouchableOpacity key={index}>
             <View style={styles.documentItem}>
               <MaterialCommunityIcons name="file-document" size={50} color="#007AFF" />
               <View style={styles.documentText}>
                 <View style={styles.info}>
-                  <Text style={styles.documentFont}>{appointment.document}</Text>
+                  <Text style={styles.documentFont}>{docData.document}</Text>
                 </View>
-                <Text style={styles.doctorFont}>
-                  {appointment.doctor} - {appointment.specialization}
-                </Text>
-                <Text style={styles.dateFont}>{appointment.date}</Text>
+                <View style={styles.info}>
+                  <Text style={styles.doctorFont}>
+                    {docData.doctor} -
+                  </Text>
+                  <Text style={styles.specializationFont}>
+                    {' '}{docData.specialization}
+                  </Text>
+                </View>
+                <Text style={styles.dateFont}>{docData.date}</Text>
               </View>
             </View>
           </TouchableOpacity>
         ))}
       </ScrollView>
 
-       {/* Button "Dokumente aktualisieren" */}
+      {/* Button "Dokumente aktualisieren" */}
 
       <TouchableOpacity style={styles.fab} onPress={handleNotification}>
         <MaterialCommunityIcons name="update" style={styles.fabIcon} />
         <Text style={styles.fabText}>Dokumente{"\n"}aktualisieren</Text>
       </TouchableOpacity>
 
-       {/* Inhalte der Notification */}
+      {/* Inhalte der Notification */}
 
       <Modal visible={modalVisible} animationType="slide" transparent={true}>
         <View style={styles.modalContainer}>
@@ -129,7 +134,7 @@ const DokumenteScreen = () => {
 };
 
 
-// Stile für die unterschiedlichen Komponenten
+// Stile für die unterschiedlichen Dokumente
 
 const styles = StyleSheet.create({
 
@@ -160,13 +165,19 @@ const styles = StyleSheet.create({
   },
   documentFont: {
     fontWeight: "500",
-    fontSize: 22,
+    fontSize: 24,
   },
   doctorFont: {
     color: "#666",
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: "bold"
   },
+  specializationFont: {
+    color: "#666",
+    fontSize: 20,
+    fontStyle: "italic",
+  },
+
   dateFont: {
     color: "#666",
     fontSize: 18,
