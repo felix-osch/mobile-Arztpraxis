@@ -1,8 +1,14 @@
 ## Readme - M3
 
-* Gruppe:	4
-* Team-Nr.: 15
-* Projektthema: Kommunikation im niedergelassenen, ärztlichen Bereich
+* Gruppe:	
+* 4
+* 
+* Team-Nr.: 
+* 15
+* 
+* Projektthema:
+*  
+* Kommunikation im niedergelassenen, ärztlichen Bereich
 
 ### Implementierung
 
