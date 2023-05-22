@@ -176,7 +176,7 @@ const styles = StyleSheet.create({
   },
   specialization: {
     fontStyle: "italic",
-    fontSize: 22,
+    fontSize: 20,
     paddingLeft: 8,
   },
   appointmentPreview: {

@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
   },
   messagePreview: {
     color: "#666",
-    fontSize: 20,
+    fontSize: 18,
   },
   fab: {
     position: "absolute",
