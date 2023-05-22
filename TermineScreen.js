@@ -57,7 +57,7 @@ const appointments = [
   {
     doctor: "Dr. Groß",
     specialization: "Allgemeinmediziner",
-    date: "Freiatg, 01.09.2023 - 08:30",
+    date: "Freitag, 01.09.2023 - 08:30",
   },
   {
     doctor: "Dr. Park",
@@ -165,16 +165,17 @@ const styles = StyleSheet.create({
   },
   doctor: {
     fontWeight: "500",
-    fontSize: 22,
+    fontSize: 24,
   },
   specialization: {
     fontStyle: "italic",
-    fontSize: 18,
+    fontSize: 22,
     paddingLeft: 8,
   },
   appointmentPreview: {
     color: "#666",
     fontSize: 18,
+    fontWeight: "bold"
   },
   fab: {
     position: "absolute",
