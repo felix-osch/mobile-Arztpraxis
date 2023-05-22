@@ -97,8 +97,8 @@ const NachrichtenScreen = ({ handleScreenChange }) => {
     <View style={styles.container}>
       {/* Display messages in a scrollable view */}
       <ScrollView style={styles.messages}>
-         {/* Map through each message and render it on the screen */}
-         {messages.map((message, index) => (
+        {/* Map through each message and render it on the screen */}
+        {messages.map((message, index) => (
           <TouchableOpacity
             key={index}
             onPress={() => handleOpenMessage("chat")} // On press, navigate to the chat screen to display a message
@@ -176,11 +176,11 @@ const styles = StyleSheet.create({
   },
   sender: {
     fontWeight: "500",
-    fontSize: 22,
+    fontSize: 24,
   },
   specialization: {
     fontStyle: "italic",
-    fontSize: 18,
+    fontSize: 20,
     paddingLeft: 8,
   },
   messagePreview: {

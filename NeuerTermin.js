@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Modal, TouchableOpacity } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import { Calendar, LocaleConfig } from "react-native-calendars";
 
+//Config the Calender to German
 LocaleConfig.locales["de"] = {
   monthNames: [
     "Januar",
@@ -47,6 +48,7 @@ LocaleConfig.locales["de"] = {
 
 LocaleConfig.defaultLocale = "de";
 
+// Array of doctor objects. Each object contains the name and specialization of a doctor.
 const doctors = [
   {
     name: " -   kein Arzt ausgewählt",
@@ -126,6 +128,7 @@ const doctors = [
   },
 ];
 
+//Predifined dates that have free appointment slots
 const freeDates = {
   "2023-05-26": {
     selected: true,
@@ -149,64 +152,66 @@ const freeDates = {
   },
 };
 
+//Component that allows the User to book a new appointment on a specific date for a specific doctor
 const NeuerTermin = ({ handleScreenChange }) => {
+  //Stores the doctor for the appointment
   const [selectedDoctor, setSelectedDoctor] = useState(doctors[0].name);
+
+  //Stores the currently selected day
   const [clickedDay, setclickedDay] = useState("");
 
-  const [message, setMessage] = useState("");
-
-  //const [showInput, setShowInput] = useState(false);
-
+  //When pressing on any day on the Calender
   const handleDayPress = (day) => {
     setclickedDay(day.dateString);
-    //setShowInput(!!freeDates[day.dateString]);
-  };
-
-  const handleSendButton = (screen) => {
-    handleScreenChange(screen);
   };
 
   const getMarkedDates = () => {
     let dates = { ...freeDates };
     if (dates[clickedDay]) {
-      // Wenn das ausgewählte Datum in freeDates ist, füge die Markierung hinzu
+      // If the selected date is in freeDates, add the marker
       dates[clickedDay] = { ...dates[clickedDay], marked: true };
     } else {
-      // Wenn das ausgewählte Datum nicht in freeDates ist, markiere nur den Tag
+      // If the selected date is not in freeDates, select only the day
       dates[clickedDay] = { marked: true };
     }
     return dates;
   };
 
+  //Stores the selected time slot
   const [selectedTimeSlot, setSelectedTimeSlot] = useState(null);
+
+  //Stores if the Modal is currently visible or not
   const [isModalVisible, setModalVisible] = useState(false);
 
-  // Funktion zum Öffnen des Modals mit dem ausgewählten Zeitslot
+  // Function to open the modal with the selected timeslot
   const handleTimeSlotPress = (time) => {
     setSelectedTimeSlot(time);
     setModalVisible(true);
   };
 
-  // Funktion zum Schließen des Modals
+  // Function to close the modal
   const handleCloseModal = () => {
     setModalVisible(false);
   };
 
+  //Formats the Date
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     const day = date.getDate();
-    const month = date.getMonth() + 1; // Monate sind von 0-11
+    const month = date.getMonth() + 1;
     const year = date.getFullYear();
 
     return `${day}.${month}.${year}`;
   };
 
+  //Stores if appointmen was booked
   const [bookingConfirmed, setBookingConfirmed] = useState(false);
 
+  //When pressing on "book appointment"
   const handleConfirmBooking = () => {
     setModalVisible(false);
     setBookingConfirmed(true);
-    setTimeout(() => setBookingConfirmed(false), 3000); // Die Bestätigungsnachricht wird nach 3 Sekunden ausgeblendet
+    setTimeout(() => setBookingConfirmed(false), 3000);
   };
 
   return (
@@ -238,7 +243,7 @@ const NeuerTermin = ({ handleScreenChange }) => {
             style={{ width: 350, height: 360 }}
           />
 
-          {/* Datum auswählen und Verfügbarkeit anzeigen */}
+          {/* Select Date and check availability */}
           {clickedDay && (
             <View>
               {freeDates[clickedDay] ? (
@@ -325,6 +330,7 @@ const NeuerTermin = ({ handleScreenChange }) => {
   );
 };
 
+// Stylesheet for the NeuerTermin component
 const styles = StyleSheet.create({
   container: {
     flex: 1,

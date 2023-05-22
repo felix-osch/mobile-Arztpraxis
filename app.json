@@ -19,12 +19,18 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/app_icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "univie.ac.at.mobileArztpraxis"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "86949fab-7f54-4b36-a13f-9ee0237a6d3a"
+      }
     }
   }
 }

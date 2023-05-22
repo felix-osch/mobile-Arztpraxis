@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
+// Array of appointments, each appointment contains doctor, specialization and date
 const appointments = [
   {
     doctor: "Dr. Huber",
@@ -76,10 +77,14 @@ const appointments = [
   },
 ];
 
+//Component that displays all the appointment a User has
 const NachrichtenScreen = ({ handleScreenChange }) => {
+  //When pressing on button "new appointment"
   const handleNewAppointment = (screen) => {
     handleScreenChange(screen);
   };
+
+  //When pressing on an appointment
   const handleOpenAppointment = (screen) => {
     handleScreenChange(screen);
   };
@@ -122,6 +127,7 @@ const NachrichtenScreen = ({ handleScreenChange }) => {
   );
 };
 
+// Stylesheet for the TermineScreen component
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -165,11 +171,11 @@ const styles = StyleSheet.create({
   },
   doctor: {
     fontWeight: "500",
-    fontSize: 22,
+    fontSize: 24,
   },
   specialization: {
     fontStyle: "italic",
-    fontSize: 18,
+    fontSize: 20,
     paddingLeft: 8,
   },
   appointmentPreview: {

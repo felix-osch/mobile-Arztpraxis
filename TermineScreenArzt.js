@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { Calendar, LocaleConfig } from "react-native-calendars";
 
+// Array of appointments, each appointment contains patient, date and notes
 const appointments = [
   {
     patient: "Huber Karl",
@@ -76,9 +77,11 @@ const appointments = [
   },
 ];
 
+//Component that displays the appointments from the doctor's point of view
 const TermineScreenArzt = ({ handleScreenChange }) => {
   const [selected, setSelected] = useState("");
 
+  //Returns the current Date
   const getCurrentDate = () => {
     let date = new Date();
     let year = date.getFullYear();
@@ -87,6 +90,7 @@ const TermineScreenArzt = ({ handleScreenChange }) => {
     return `${year}-${month}-${day}`;
   };
 
+  //Config the Calender to German
   useEffect(() => {
     LocaleConfig.locales["de"] = {
       monthNames: [
@@ -135,19 +139,22 @@ const TermineScreenArzt = ({ handleScreenChange }) => {
     setSelected(getCurrentDate());
   }, []);
 
+  //Formats the Date
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     const day = date.getDate();
-    const month = date.getMonth() + 1; // Monate sind von 0-11
+    const month = date.getMonth() + 1;
     const year = date.getFullYear();
 
     return `${day}.${month}.${year}`;
   };
 
+  //Prints the Date
   const renderDayMessage = (dateString) => {
     return `Deine Termine für ${formatDate(dateString)}:`;
   };
 
+  //When pressing on one of the listed appointments
   const handleOpenAppointment = (screen) => {
     handleScreenChange(screen);
   };
@@ -200,6 +207,7 @@ const TermineScreenArzt = ({ handleScreenChange }) => {
   );
 };
 
+// Stylesheet for the TermineScreenArzt component
 const styles = StyleSheet.create({
   container: {
     flex: 1,

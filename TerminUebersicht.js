@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { Card, Divider } from "react-native-paper";
 
+//Component that displays more details about a given appointment from the patients point of view
 const TerminUebersicht = () => {
   const [details, setDetails] = useState([
     {
@@ -36,6 +37,7 @@ const TerminUebersicht = () => {
   );
 };
 
+// Stylesheet for the TerminUebersicht component
 const styles = StyleSheet.create({
   container: {
     flex: 1,
