@@ -176,16 +176,16 @@ const styles = StyleSheet.create({
   },
   sender: {
     fontWeight: "500",
-    fontSize: 22,
+    fontSize: 24,
   },
   specialization: {
     fontStyle: "italic",
-    fontSize: 18,
+    fontSize: 22,
     paddingLeft: 8,
   },
   messagePreview: {
     color: "#666",
-    fontSize: 18,
+    fontSize: 20,
   },
   fab: {
     position: "absolute",
