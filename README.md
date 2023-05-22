@@ -1,21 +1,16 @@
 ## Readme - M3
 
-Gruppe:	 4
+Gruppe:	4
  
-Team-Nr.: 
-15
+Team-Nr.: 15
 
-Projektthema:
-  
-Kommunikation im niedergelassenen, ärztlichen Bereich
+Projektthema: Kommunikation im niedergelassenen, ärztlichen Bereich
 
 ### Implementierung
 
-Framework:	
-React Native Android
+Framework:  React Native Android
 
-API-Version:	
-Android API-Level 27-30
+API-Version:	 Android API-Level 27-30
 
 Gerät(e), auf dem(denen) getestet wurde: 
 Pixel 6
