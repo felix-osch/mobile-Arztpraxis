@@ -1,14 +1,13 @@
 ## Readme - M3
 
-* Gruppe:	
-* 4
-* 
-* Team-Nr.: 
-* 15
-* 
-* Projektthema:
-*  
-* Kommunikation im niedergelassenen, ärztlichen Bereich
+Gruppe:	 4
+ 
+Team-Nr.: 
+15
+
+Projektthema:
+  
+Kommunikation im niedergelassenen, ärztlichen Bereich
 
 ### Implementierung
 
@@ -31,7 +30,7 @@ React, { useState, useEffect } from "react";
 
 
 Dauer der Entwicklung:
-[25 Stunden]
+25 Stunden
 
 Weitere Anmerkungen:
 
