@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Modal} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Modal } from 'react-native';
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Picker } from '@react-native-picker/picker';
 
@@ -7,8 +7,8 @@ import { Picker } from '@react-native-picker/picker';
 //Statische Inhalte für die Liste
 
 const documents = [
-  
- 
+
+
   {
     patient: "Huber Karl",
     date: "11.05.2023",
@@ -74,13 +74,13 @@ const documents = [
     date: "09.05.2023",
     document: "Krankmeldung",
   },
-  
+
 ];
 
 
 
 const DokumenteScreenArzt = () => {
-  
+
   // Zustände für die Modalsichtbarkeit, den ausgewählten Patienten und das ausgewählte Dokument
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedPatient, setSelectedPatient] = useState("-kein Patient ausgewählt-");
@@ -131,7 +131,7 @@ const DokumenteScreenArzt = () => {
       {/* Button zum Hochladen des Dokuments */}
 
       <TouchableOpacity style={styles.fab} onPress={handleModalOpen}>
-        <MaterialCommunityIcons name="upload" style={styles.fabIcon} />
+        <MaterialCommunityIcons name="upload" style={styles.whiteIcon} />
         <Text style={styles.fabText}>Dokument{"\n"}hochladen</Text>
       </TouchableOpacity>
 
@@ -148,7 +148,7 @@ const DokumenteScreenArzt = () => {
                 selectedValue={selectedPatient}
                 onValueChange={(itemValue) => setSelectedPatient(itemValue)}
                 style={styles.picker}
-              
+
               >
                 {/* Optionen für Patienten */}
 
@@ -160,7 +160,7 @@ const DokumenteScreenArzt = () => {
                 <Picker.Item label="Gries Gudrun" value="Gries Gudrun" />
                 <Picker.Item label="Müller Heimo" value="Müller Heimo" />
                 <Picker.Item label="Los Klaus" value="Los Klaus" />
-                <Picker.Item label="Carlo Timo" value= "Carlo Timo"/>
+                <Picker.Item label="Carlo Timo" value="Carlo Timo" />
                 <Picker.Item label="Weber Florian" value="Weber Florian" />
                 <Picker.Item label="Groß Heinz" value="Groß Heinz" />
                 <Picker.Item label="Park Jean" value="Park Jean" />
@@ -181,12 +181,20 @@ const DokumenteScreenArzt = () => {
               >
                 {/* Optionen für Dokumente */}
 
-                <Picker.Item label="-kein Dokument ausgewählt-" value="-kein Rezept ausgewählt-" />
+                <Picker.Item label="-kein Dokumenttyp ausgewählt-" value="-kein Dokumenttyp ausgewählt-" />
                 <Picker.Item label="Rezept" value="Rezept" />
                 <Picker.Item label="Überweisung" value="Überweisung" />
                 <Picker.Item label="Krankmeldung" value="Krankmeldung" />
 
               </Picker>
+            </View>
+
+
+            {/* Feld für Upload */}
+
+            <View style={styles.uploadField}>
+              <Text style={styles.uploadText}>Datei hochladen</Text>
+              <MaterialCommunityIcons name="upload" style={styles.grayIcon} />
             </View>
 
             {/* Button-Container */}
@@ -200,7 +208,7 @@ const DokumenteScreenArzt = () => {
               </TouchableOpacity>
 
               {/* Senden-Button */}
-              
+
               <TouchableOpacity style={[styles.modalButton, styles.sendButton]} onPress={handleBackButton}>
                 <Text style={styles.modalButtonText}>Senden</Text>
               </TouchableOpacity>
@@ -269,10 +277,16 @@ const styles = StyleSheet.create({
     borderRadius: 40,
     elevation: 8,
   },
-  fabIcon: {
+  whiteIcon: {
     fontSize: 56,
     color: "white",
   },
+
+  grayIcon: {
+    fontSize: 56,
+    color: "gray"  
+  },
+
   fabText: {
     marginLeft: 10,
     marginRight: 20,
@@ -288,7 +302,7 @@ const styles = StyleSheet.create({
   modalContent: {
     backgroundColor: "#fff",
     width: "100%",
-    height: "80%",
+    height: "60%",
     padding: 20,
     borderRadius: 10,
     alignItems: "center",
@@ -297,7 +311,7 @@ const styles = StyleSheet.create({
     width: "100%",
     borderWidth: 1,
     borderColor: "black",
-    marginBottom: 10,
+    marginBottom: 20,
   },
   picker: {
     width: "100%",
@@ -319,16 +333,33 @@ const styles = StyleSheet.create({
   },
   sendButton: {
     backgroundColor: "#03A9F4",
-    marginRight: 10,
+    marginRight: 5,
+    marginLeft: 5
   },
   backButton: {
     backgroundColor: "orange",
-    marginLeft: 10,
+    marginLeft: 5,
+    marginRight: 5
   },
   modalButtonText: {
     fontSize: 24,
     color: "white",
     textAlign: "center",
+  },
+
+  uploadField: {
+    height: 200,
+    width: "100%",
+    borderWidth: 1,
+    borderColor: "black",
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 20
+  },
+  uploadText: {
+    fontSize: 20,
+    fontWeight: "normal",
+    color: "gray"
   },
 });
 
