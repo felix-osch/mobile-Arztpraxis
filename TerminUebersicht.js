@@ -46,12 +46,12 @@ const styles = StyleSheet.create({
     marginVertical: 8,
   },
   title: {
-    fontSize: 20,
+    fontSize: 26,
     fontWeight: "bold",
     marginBottom: 10,
   },
   subtitle: {
-    fontSize: 18,
+    fontSize: 24,
     marginBottom: 10,
   },
   divider: {
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   text: {
-    fontSize: 16,
+    fontSize: 20,
     marginBottom: 5,
   },
 });
