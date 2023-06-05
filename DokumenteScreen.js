@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Modal } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Modal, TextInput } from 'react-native';
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 
@@ -66,7 +66,9 @@ const documents = [
 // Inhalt der Seite 
 
 const DokumenteScreen = () => {
+  // Zustände des Modals und des Suchtexts
   const [modalVisible, setModalVisible] = useState(false);
+  const [searchText, setSearchText] = useState('');
 
   // Funktion zum Öffnen des Modals
 
@@ -80,14 +82,29 @@ const DokumenteScreen = () => {
     setModalVisible(false);
   };
 
+  // Funktion welche Daten der Dokumente auf positive Suchergebnisse überprüft
+  const filteredDocuments = documents.filter(document => {
+    return (
+      document.doctor.toLowerCase().includes(searchText.toLowerCase()) ||
+      document.specialization.includes(searchText) ||
+      document.document.toLowerCase().includes(searchText.toLowerCase())
+    );
+  });
+
   // Rendering der Elemente der Seite
   return (
     <View style={styles.container}>
+      <TextInput
+        style={styles.searchBar}
+        value={searchText}
+        onChangeText={text => setSearchText(text)}
+        placeholder="Suche"
+      />
       <ScrollView style={styles.documentsList}>
 
         {/* Sichbare Ausgabe der Liste */}
 
-        {documents.map((docData, index) => (
+        {filteredDocuments.map((docData, index) => (
           <TouchableOpacity key={index}>
             <View style={styles.documentItem}>
               <MaterialCommunityIcons name="file-document" size={50} color="#007AFF" />
@@ -142,6 +159,15 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     padding: 16,
+  },
+  searchBar: {
+    height: 50,
+    borderColor: '#03A9F4',
+    borderWidth: 1,
+    borderRadius: 10,
+    paddingLeft: 10,
+    marginBottom: 10,
+    fontSize: 18,
   },
   documentsList: {
     flex: 1,

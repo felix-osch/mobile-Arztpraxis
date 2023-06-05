@@ -1,11 +1,12 @@
 // Importing required components and libraries from react, react-native and @expo/vector-icons
-import React from "react";
+import React, {useState} from "react";
 import {
   StyleSheet,
   View,
   Text,
   TouchableOpacity,
   ScrollView,
+  TextInput
 } from "react-native";
 
 // Import Icons for buttons from Expo library
@@ -83,6 +84,9 @@ const messages = [
 // NachrichtenScreen is a functional component for displaying messages
 // The component receives handleScreenChange function as props for navigation
 const NachrichtenScreen = ({ handleScreenChange }) => {
+  // State of the search text
+  const [searchText, setSearchText] = useState('');
+
   // Function to navigate to the new message screen
   const handleNewMessage = (screen) => {
     handleScreenChange(screen);
@@ -91,14 +95,27 @@ const NachrichtenScreen = ({ handleScreenChange }) => {
   const handleOpenMessage = (screen) => {
     handleScreenChange(screen);
   };
+  // Function that checks messages for positive search results
+  const filteredMessages = messages.filter(message => {
+    return (
+      message.sender.toLowerCase().includes(searchText.toLowerCase()) ||
+      message.specialization.toLowerCase().includes(searchText.toLowerCase())
+    );
+  });
 
   // Render the NachrichtenScreen component
   return (
     <View style={styles.container}>
+      <TextInput
+        style={styles.searchBar}
+        value={searchText}
+        onChangeText={text => setSearchText(text)}
+        placeholder="Suche"
+      />
       {/* Display messages in a scrollable view */}
       <ScrollView style={styles.messages}>
         {/* Map through each message and render it on the screen */}
-        {messages.map((message, index) => (
+        {filteredMessages.map((message, index) => (
           <TouchableOpacity
             key={index}
             onPress={() => handleOpenMessage("chat")} // On press, navigate to the chat screen to display a message
@@ -138,6 +155,15 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     padding: 16,
+  },
+  searchBar: {
+    height: 50,
+    borderColor: '#03A9F4',
+    borderWidth: 1,
+    borderRadius: 10,
+    paddingLeft: 10,
+    marginBottom: 10,
+    fontSize: 18,
   },
   header: {
     height: 50,
