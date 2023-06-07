@@ -69,6 +69,9 @@ const HomeScreen = ({ handleScreenChange }) => {
         >
           <MaterialCommunityIcons name="message" size={80} color="white" />
           <Text style={styles.buttonText}>Nachrichten</Text>
+          <View style={styles.notificationBadge}>
+            <Text style={styles.notificationBadgeText}>3</Text>
+          </View>
         </TouchableOpacity>
       </View>
     </View>
@@ -97,6 +100,7 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 8,
     paddingVertical: 55,
+    position: "relative",
   },
   buttonText: {
     color: "#fff",
@@ -104,6 +108,22 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginTop: 10,
     textAlign: "center",
+  },
+  notificationBadge: {
+    position: "absolute",
+    top: 10,
+    right: 10,
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: "#89CFF0",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  notificationBadgeText: {
+    fontSize: 24,
+    color: "white",
+    fontWeight: "bold",
   },
 });
 

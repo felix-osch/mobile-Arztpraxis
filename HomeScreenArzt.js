@@ -1,12 +1,12 @@
 // Importing necessary libraries and components
-import React from 'react';
-import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
+import React from "react";
+import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 
 // Importing MaterialCommunityIcons from Expo to display icons
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 // Defining HomeScreen component which accepts handleScreenChange function as props
-const HomeScreenArzt = ({handleScreenChange}) => {
+const HomeScreenArzt = ({ handleScreenChange }) => {
   // Function to change the screen on button press
   const handleScreenPress = (screen) => {
     handleScreenChange(screen);
@@ -18,13 +18,15 @@ const HomeScreenArzt = ({handleScreenChange}) => {
       <View style={styles.row}>
         <TouchableOpacity
           style={styles.button}
-          /* onPress={() => handleScreenPress('meinbereich')} */>
+          /* onPress={() => handleScreenPress('meinbereich')} */
+        >
           <MaterialCommunityIcons name="account" size={80} color="white" />
           <Text style={styles.buttonText}>Mein Bereich</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.button}
-          /* onPress={() => handleScreenPress('bedienungshilfe')} */>
+          /* onPress={() => handleScreenPress('bedienungshilfe')} */
+        >
           <MaterialCommunityIcons name="help-circle" size={80} color="white" />
           <Text style={styles.buttonText}>Bedienungshilfe</Text>
         </TouchableOpacity>
@@ -32,29 +34,44 @@ const HomeScreenArzt = ({handleScreenChange}) => {
       <View style={styles.row}>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => handleScreenPress('termineArzt')}>
-          <MaterialCommunityIcons name="calendar-clock" size={80} color="white" />
+          onPress={() => handleScreenPress("termineArzt")}
+        >
+          <MaterialCommunityIcons
+            name="calendar-clock"
+            size={80}
+            color="white"
+          />
           <Text style={styles.buttonText}>Termine</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => handleScreenPress('dokumenteArzt')}>
-          <MaterialCommunityIcons name="file-document" size={80} color="white" />
+          onPress={() => handleScreenPress("dokumenteArzt")}
+        >
+          <MaterialCommunityIcons
+            name="file-document"
+            size={80}
+            color="white"
+          />
           <Text style={styles.buttonText}>Dokumente</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.row}>
         <TouchableOpacity
           style={styles.button}
-          /* onPress={() => handleScreenPress('patienten')} */>
+          /* onPress={() => handleScreenPress('patienten')} */
+        >
           <MaterialCommunityIcons name="human" size={80} color="white" />
           <Text style={styles.buttonText}>Patienten</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => handleScreenPress('nachrichtenArzt')}>
+          onPress={() => handleScreenPress("nachrichtenArzt")}
+        >
           <MaterialCommunityIcons name="message" size={80} color="white" />
           <Text style={styles.buttonText}>Nachrichten</Text>
+          <View style={styles.notificationBadge}>
+            <Text style={styles.notificationBadgeText}>3</Text>
+          </View>
         </TouchableOpacity>
       </View>
     </View>
@@ -65,31 +82,47 @@ const HomeScreenArzt = ({handleScreenChange}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#fff",
   },
   row: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    width: '100%',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "100%",
     paddingHorizontal: 8,
   },
   button: {
-    alignItems: 'center',
-    backgroundColor: '#1e90ff',
+    alignItems: "center",
+    backgroundColor: "#1e90ff",
     borderRadius: 10,
     flex: 1,
     margin: 8,
     paddingVertical: 55,
   },
   buttonText: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 22,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginTop: 10,
-    textAlign: 'center',
+    textAlign: "center",
+  },
+  notificationBadge: {
+    position: "absolute",
+    top: 10,
+    right: 10,
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: "#89CFF0",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  notificationBadgeText: {
+    fontSize: 24,
+    color: "white",
+    fontWeight: "bold",
   },
 });
 
